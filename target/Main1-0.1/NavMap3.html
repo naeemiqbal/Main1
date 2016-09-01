@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+
+
+            function getLocation() {
+                var x = document.getElementById("demo");
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else {
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }
+
+            function showPosition(position) {
+                var x = document.getElementById("demo"), ithml;
+                ihtml = 'Latitude: ' + position.coords.latitude + '<br />' +
+                        'Longitude: ' + position.coords.longitude + '<br />' +
+                        'Altitude: ' + position.coords.altitude + '<br />' +
+                        'Accuracy: ' + position.coords.accuracy + '<br />' +
+                        'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '<br />' +
+                        'Heading: ' + position.coords.heading + '<br />' +
+                        'Speed: ' + position.coords.speed + '<br />' +
+                        'Timestamp: ' + position.timestamp + '<br />';
+                
+                if (position.coords.latitude >34.850 &&// position.coords.latitude < 34.881 &&
+                        position.coords.longitude < -82.386815 //&& position.coords.longitude > 82.386815
+                                )
+                            ihtml += "<img src='Flower.jpg'/>";
+                            x.innerHTML = ihtml;
+            }
+        </script>
+
+
+    </head>
+
+    <body onload="getLocation();">
+        <p id="demo"></p>        
+        <button onclick="getLocation()">Refresh</button>
+    </body>
+</html>

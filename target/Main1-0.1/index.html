@@ -1,0 +1,187 @@
+<html>
+    <head>
+        <title>Naeem Iqbal.com</title>
+        <meta name="google-site-verification" content="4AMleT3lTWLno5pQVTTQ86cawQ0r7LIsfR65H_vJ5F0" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>                  
+            section {
+                height: fit-content;
+            }
+            .mainbody{
+                top : 200px;
+                width: 50%;
+            }
+            .menu{
+                font-size: larger;                
+                text-align: center;     
+                font-weight: bold;
+                height: 150px;
+            }
+            #menu ul {
+                list-style-type:  square;
+                overflow: hidden;
+                background:  black;
+                color: white;
+            }
+            #menu li {
+                float: left;
+                display: block;
+                width: 160px;
+                margin: 10px;
+                padding: 10px;
+                border : 2px;
+            }            
+            a:link {
+                color: #00FF00;                
+            }
+            a:visited {
+                color: #FF0000;
+            }
+            a:hover {
+                color: #FFFFFF;
+            }
+            a:active {
+                color: #0000FF;
+            }
+            #momenu{
+                position: absolute;
+                background-color: black;
+                /*margin: 5px;
+                padding: 5px;*/
+                border:  activeborder groove thick ;
+                width: 250px;
+            }
+            .eastborder{
+                position: absolute;
+                right: 0px;
+                padding: 10px;             
+            }     
+            .achieve{
+                list-style-type:  square;
+                overflow: hidden;
+                background: white;
+                color: green;
+                float: top;                
+            }
+            .footer{
+                bottom: 0px;
+            }
+        </style>   
+        <script type="text/javascript">
+            var menuon = new Date(), mainmenuon = false;
+            menuon = false;
+
+            function showMenuGC() {
+                var itm = arguments[0][0],
+                        pth, li, mitm, menuname, x, y, mx, my, menuitems, y2,
+                        menu = document.getElementById("momenu");
+                if (itm instanceof MouseEvent ||
+                        itm.__proto__ === MouseEvent)
+                {
+                    pth = itm.path;
+                    for (li in itm.path)
+                    {
+                        if (pth[li] instanceof HTMLLIElement)
+                        {
+                            mitm = pth[li];
+                            menuname = mitm.attributes.menu.value || "NONE";
+                            menuitems = mitm.attributes.menuitems ? mitm.attributes.menuitems.value : null;
+                            if (menuitems === null)
+                            {
+                                return;
+                            }
+                            x = mitm.offsetLeft + 20 + "px"; 
+                            y = itm.clientY + "px";
+                            menu.hidden = "";
+                            menu.style.left = x;
+                            menu.style.top = y;
+                            menu.innerHTML = makeMenu(menuitems);
+                            break;
+                        }
+                    }
+                }
+                mainmenuon = true;
+            }
+
+            function showMenu() {
+                var itm = arguments[0][0],
+                        pth, li, mitm, menuname, x, y, mx, my, menuitems,
+                        menu = document.getElementById("momenu");
+                if (itm instanceof MouseEvent ||
+                        itm.__proto__ === MouseEvent)
+                {
+                    if (itm.target instanceof HTMLLIElement)
+                    {
+                        mitm = itm.target;
+                        menuname = mitm.attributes.menu.value || "NONE";
+                        menuitems = mitm.attributes.menuitems ? mitm.attributes.menuitems.value : null;
+                        if (menuitems === null)
+                        {
+                            return;
+                        }
+                        x = mitm.offsetLeft + 20 + "px"; //itm.clientX + "px";
+                        y = mitm.offsetHeight + mitm.offsetTop + "px";
+                        menu.hidden = "";
+                        menu.style.left = x;
+                        menu.style.top = y;
+                        menu.innerHTML = makeMenu(menuitems);
+                    }
+                }
+                mainmenuon = true;
+            }
+
+            function makeMenu(pItems)
+            {
+                var c, itm, ret = "<ul>", itm3 = pItems.split(",");
+                for (c in itm3)
+                {
+                    itm = itm3[c];
+                    if (parseInt(c) % 2 === 1)
+                        ret = ret + itm.replace(/'/g, "") + "</a></li>";
+                    else
+                        ret = ret + "<li><a href=" + itm + ">";
+                }
+                ret = ret + "</ul>";
+                return ret;
+            }
+
+            function hideMenu()
+            {
+                var menu = document.getElementById("momenu");
+                if (!mainmenuon && !menuon)
+                    menu.hidden = "hidden";
+            }
+        </script>
+    </head>  
+    <body>
+        <h1 style="text-align:center">Welcome to Naeem Iqbal's Homepage</h1>        
+        <section>
+            <div class="menu" id="menu"  >
+                <ul name="nmi1" id="menulist" onmouseover="showMenu(arguments);" onmouseout="mainmenuon = false; window.setTimeout(hideMenu, 5000);">
+                    <li menu="resources" menuitems="'http://www.mkyong.com', Java {Mkyong}, 'http://vogella.com/', Java {Vogella}, 'https://alextheedom.wordpress.com/cloud/amazon-free-usage-tier-installing-tomcat-7-on-an-ec2-linux-instance', AWS First WAR app">Resources</li>
+                    <li menu="sample"    menuitems="'../2JerseyRest/', Grid Form Jersey Restful,'TicTacToe.html',TicTacToe">Sample Applications</li>
+                    <li menu="secure"    menuitems="'Auth1/', Tomcat Realm, 'OAuth2v1/',SSO using OAuth2 Google API" >Secure Pages</li>
+                    <li menu="geolocation"  menuitems="'Navigator.html', My Coordinates, 'Movement.html', Movement,'NavMap.html',Location on Map, 'Distance0.html',Coordinate Distance  ">Geolocation</li>                    
+                    <li menu="haramain"  menuitems="'https://play.google.com/store/apps/details?id=com.naeemiqbal', Android App , 'mh/index.html', Web Prototype,'LocatorA1.html?location=home', Locator Home,'LocatorA1.html?location=masjid', Locator Masjid, 'LocatorA1.html?location=makkah', Locator Haram,'Makkah.jpg', Guidemap Makkah">My Haramain</li>
+                    <li menu="about"     menuitems="'https://careers.stackoverflow.com/cv/edit/245592?verified=False','Stack Overflow' ,'https://github.com/naeemiqbal','Git Hub','https://www.linkedin.com/in/naeemiqbal','Linked In','https://www.blogger.com/profile/10382896966914424171','Blogger','static/NaeemIqbal.doc','Resume'" >About</li>                    
+                </ul> 
+            </div>            
+        </section>
+        <section>  
+            <div class="mainbody">
+                <p>Purpose: Create a shopping cart application using Sencha ExtJS and Restful webservices and hosted on the cloud. </p>
+                <ul class="achieve">
+                    <li>Host on the AWS cloud.</li>
+                    <li>Create javascript menus</li>
+                    <li> Work with CSS from scratch</li>
+                </ul>
+                <h6 class="footer">Last Updated : 8/22/2015 1210</h6>
+            </div>
+        </section>
+        <div id="momenu" class="momenu" hidden="hidden" onmouseover="menuon = true;" onmouseout="menuon = false; window.setTimeout(hideMenu, 3000);"> hidden MENU</div>
+        <div class="eastborder">
+            <img src="NaeemIqbal.JPG" width="360px" height="640px" />
+        </div>
+    </body>
+</html>
